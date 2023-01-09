@@ -1,4 +1,5 @@
-const roundGuess = document.querySelector('.gameScore');
+const compScoreDisplay = document.querySelector('.compScore');
+const playerScoreDisplay = document.querySelector('.playerScore');
 const resultField = document.querySelector('.result');
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
@@ -7,8 +8,8 @@ const scissors = document.querySelector('.scissors');
 
 let roundCount = 1;
 let playerChoice;
-let roundsWon = 0;
-let roundsLost = 0;
+let compScore = 0;
+let playerScore = 0;
 
 function getComputerChoice() {
    const choices = ['rock', 'paper', 'scissors'];
@@ -56,12 +57,13 @@ function playRound() {
    || (playerChoice == 'scissors' && computerChoice == 'paper'))
    {
       resultField.textContent = "You won this round!";
-      roundGuess.textContent += " "
-      roundsWon++;
+      playerScore++;
+      playerScoreDisplay.textContent = playerScore;
    }
    else { 
       resultField.textContent = "You lost this round.";
-      roundsLost++;
+      compScore++;
+      compScoreDisplay.textContent = compScore;
    }
    roundCount++;
    
