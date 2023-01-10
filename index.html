@@ -8,28 +8,33 @@
    <title>Rock Paper Scissors</title>
 </head>
 <body>
-   <div class="mainContainer">
-     
-      <div class="buttons">
-         <button class="rock">ROCK</button>
-         <button class="paper">PAPER</button>
-         <button class="scissors">SCISSORS</button>
-      </div>
+   <div class="container">
+      <div class="header">Rock, Paper, Scissors in 5 rounds</div>
 
-      <div class="paras" id="myDIV">
-         <p class="result"></p>
-         <div class="scoreBoard">
-            <div class="names">
-               <p class="player">PLAYER</p>
-               <p class="computer">COMPUTER</p>
-            </div>
-            <div class="scores">
-               <p class="playerScore">0</p>
-               <p class="compScore">0</p>
+      <div class="mainContainer">
+         <p class="howToPlay">Press any button to start, best out of five wins</p>
+         <div class="buttons">
+            <button class="rock">ROCK</button>
+            <button class="paper">PAPER</button>
+            <button class="scissors">SCISSORS</button>
+         </div>
+         <div class="gameDisplay" id="gameDisplayID">
+            <p class="result"></p>
+            <div class="scoreBoard">
+               <div class="names">
+                  <p class="player">PLAYER</p>
+                  <p class="computer">COMPUTER</p>
+               </div>
+               <div class="scores">
+                  <p class="playerScore">0</p>
+                  <p class="compScore">0</p>
+               </div>
             </div>
          </div>
       </div>
-</div>
+
+      <div class="footer">&copy Henry Zelenak 2023</div>
+   </div>
 
    <script src="script.js"></script>
 </body>

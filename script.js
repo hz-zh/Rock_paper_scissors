@@ -1,16 +1,17 @@
 const compScoreDisplay = document.querySelector('.compScore');
 const playerScoreDisplay = document.querySelector('.playerScore');
 const resultField = document.querySelector('.result');
-const gamePlay = document.querySelector('.paras');
+const gamePlay = document.querySelector('.gameDisplay');
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
+const buttons = document.querySelector('.buttons');
 
 
 let roundCount = 0;
 let playerChoice;
-let compScore = 1;
-let playerScore = 1;
+let compScore = 0;
+let playerScore = 0;
 let reset;
 
 function getComputerChoice() {
@@ -22,21 +23,19 @@ function getComputerChoice() {
 function game() {
    gamePlay.style.display = 'none';
    
+   
    rock.addEventListener('click',() => {    
       playerChoice = 'rock';
-      console.log(roundCount);
       playRound();   
    });
    
    paper.addEventListener('click',() => {    
       playerChoice = 'paper';
-      console.log(roundCount);
       playRound(); 
    });
    
    scissors.addEventListener('click',() => {    
       playerChoice = 'scissors';
-      console.log(roundCount);
       playRound();
    });
 }
@@ -72,14 +71,16 @@ function playRound() {
 }
 
 function gameEnd () {
+   buttons.style.display = 'none';
+
    if (compScore > playerScore) {
-      resultField.textContent = "You lost this game!"
+      resultField.textContent = "You lost this game."
    }
    else { resultField.textContent = "You won!!!"}
 
    reset = document.createElement("button");
    reset.innerHTML = "Play Again";
-   document.getElementById("myDIV").appendChild(reset);
+   document.getElementById("gameDisplayID").appendChild(reset);
 
    reset.onclick = function() {resetGame()};
 }
@@ -92,9 +93,24 @@ function resetGame() {
    playerScoreDisplay.textContent = playerScore;
    compScoreDisplay.textContent = compScore;
    resultField.textContent = "";
-   document.getElementById("myDIV").removeChild(reset);
+   document.getElementById("gameDisplayID").removeChild(reset);
+   buttons.style.display = 'flex';
 }
 
 game();
 
+/*const newspaperSpinning = [
+   { transform: 'rotate(0) scale(1)' },
+   { transform: 'rotate(360deg) scale(0)' }
+ ];
  
+ const newspaperTiming = {
+   duration: 2000,
+   iterations: 1,
+ }
+ 
+ const newspaper = document.querySelector(".newspaper");
+ 
+ newspaper.addEventListener('click', () => {
+   newspaper.animate(newspaperSpinning, newspaperTiming);
+ }); */
