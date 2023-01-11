@@ -73,10 +73,11 @@ function playRound() {
 function gameEnd () {
    buttons.style.display = 'none';
 
-   if (compScore > playerScore) {
-      resultField.textContent = "You lost this game."
-   }
-   else { resultField.textContent = "You won!!!"}
+   if (compScore > playerScore) 
+   { resultField.textContent = "You lost this game." }
+   else if (playerScore > compScore)
+   { resultField.textContent = "You won!!!" }
+   else { resultField.textContent = "The game is a draw! No one wins." }
 
    reset = document.createElement("button");
    reset.innerHTML = "Play Again";
