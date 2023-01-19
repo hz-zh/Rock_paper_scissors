@@ -1,11 +1,12 @@
 const compScoreDisplay = document.querySelector('.compScore');
 const playerScoreDisplay = document.querySelector('.playerScore');
 const resultField = document.querySelector('.result');
-const gamePlay = document.querySelector('.gameDisplay');
+const gameDisplay = document.querySelector('.gameDisplay');
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 const buttons = document.querySelector('.buttons');
+const roundCounter = document.querySelector('.round');
 
 
 let roundCount = 0;
@@ -13,16 +14,10 @@ let playerChoice;
 let compScore = 0;
 let playerScore = 0;
 let reset;
-
-function getComputerChoice() {
-   const choices = ['rock', 'paper', 'scissors'];
-   const randomElement = choices[Math.floor(Math.random() * 3)];
-   return randomElement;
-}
+// let isAnimated;
 
 function game() {
-   gamePlay.style.display = 'none';
-   
+   gameDisplay.style.display = 'none';
    
    rock.addEventListener('click',() => {    
       playerChoice = 'rock';
@@ -40,8 +35,21 @@ function game() {
    });
 }
 
+function getRoundNumber (n) {
+   string = document.querySelector('.round');
+   string.textContent = `ROUND# \xa0\xa0\xa0${n}`;
+}
+
+function getComputerChoice() {
+   const choices = ['rock', 'paper', 'scissors'];
+   const randomElement = choices[Math.floor(Math.random() * 3)];
+   return randomElement;
+}
+
 function playRound() {
-   gamePlay.style.display = 'flex';
+   gameDisplay.style.display = 'flex';
+   // toggleGameDisplay(); // This is for upcoming animation
+   // isAnimated = false;  // This is for upcoming animation
 
    computerChoice = getComputerChoice();
 
@@ -65,7 +73,12 @@ function playRound() {
       compScoreDisplay.textContent = compScore;
    }
    roundCount++;
-   if (roundCount >= 5) {
+
+   getRoundNumber(roundCount);
+   if ( (playerScore >= (compScore + 2) || compScore >= (playerScore + 2)) && roundCount > 3 ) {
+      gameEnd();
+   }
+   else if (roundCount >= 5) {
       gameEnd();
    }
 }
@@ -87,7 +100,8 @@ function gameEnd () {
 }
 
 function resetGame() {
-   gamePlay.style.display = 'none';
+   //toggleGameDisplay(); // This is for upcoming animation
+   gameDisplay.style.display = 'none';
    roundCount = 0;
    compScore = 0;
    playerScore = 0;
@@ -99,3 +113,34 @@ function resetGame() {
 }
 
 game();
+
+/* Below this line is animation development in the works
+
+function foo(elem, num) {
+   let initialWidth = Number(elem.style.height.slice(0, 1));
+   let i = initialWidth ? num : 0;
+   let direction = initialWidth ? -1 : 1;
+ 
+   function bar() {
+     elem.style.height = i + 'px';
+     i += direction;
+ 
+     if (i <= num && i >= 0)
+       window.requestAnimationFrame(bar);
+   }
+   window.requestAnimationFrame(bar);
+ 
+   return 
+ }
+
+ function toggleGameDisplay()
+ {
+   if (!isAnimated) {
+     isAnimated = true;
+     foo(document.getElementsByClassName('gameDisplay')[0], 200);
+     return;
+   }
+   isAnimated = false;
+   foo(document.getElementsByClassName('gameDisplay')[0], 200);
+ };
+ */

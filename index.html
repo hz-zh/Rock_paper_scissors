@@ -8,18 +8,21 @@
    <title>Rock Paper Scissors</title>
 </head>
 <body>
-   <div class="container">
+   <div class="mainContainer">
       <div class="header">Rock, Paper, Scissors in 5 rounds</div>
 
-      <div class="mainContainer">
+      <div class="content">
          <p class="howToPlay">Press any button to start, best out of five wins</p>
          <div class="buttons">
             <button class="rock">ROCK</button>
             <button class="paper">PAPER</button>
             <button class="scissors">SCISSORS</button>
          </div>
-         <div class="gameDisplay" id="gameDisplayID">
-            <p class="result"></p>
+         <div class="gameDisplay" id="gameDisplayID" style="height:0%">
+            <div class="roundAndResult">
+               <p class="round"></p>
+               <p class="result"></p>
+            </div>
             <div class="scoreBoard">
                <div class="names">
                   <p class="player">PLAYER</p>
